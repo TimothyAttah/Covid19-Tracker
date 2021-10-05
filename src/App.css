@@ -1,3 +1,10 @@
+.app{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+
+}
+
 .app__header{
   display: flex;
   align-items: center;
@@ -7,4 +14,20 @@
 
 .app__header > h1 {
   text-transform: uppercase;
+}
+
+.app__left{
+  flex: 0.9;
+}
+
+.app__stats{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width:990px){
+  .app{
+    flex-direction: column;
+  }
 }
