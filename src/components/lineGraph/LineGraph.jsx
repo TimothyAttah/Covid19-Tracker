@@ -64,27 +64,28 @@ const buildChartData = (data, casesType = 'cases') => {
 	return chartData;
 };
 
-export const LineGraph = ({casesType="cases"}) => {
+export const LineGraph = ({casesType="cases", ...props}) => {
   const [ data, setData ] = useState( {} );
 		useEffect(() => {
 			const fetchData = async () => {
 				await fetch(
-					'https://disease.sh/v3/covid-19/historical/all?lastdays=50'
+					'https://disease.sh/v3/covid-19/historical/all?lastdays=30'
 				)
           .then( res => {
             return res.json();
           })
-					.then(data => {
+					.then( data => {
+						console.log('this data', data);
 						let chartData = buildChartData(data, casesType);
-            setData( chartData );
+						setData( chartData );
+						console.log('chartdata', chartData);
 					});
 			};
 			fetchData();
     }, [casesType] );
   
-  
   return (
-		<div>
+		<div className={props.className}>
 			{data?.length > 0 && (
 				<Line
 					options={options}

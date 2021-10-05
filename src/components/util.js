@@ -12,7 +12,7 @@ const casesTypeColors = {
 		hex: '#7dd71d',
 		// rgb: 'rgb(125, 215, 29)',
 		// half_op: 'rgba(125, 215, 29, 0.5)',
-		multiplier: 1200,
+		multiplier: 400,
 	},
 	deaths: {
 		hex: '#fb4443',
@@ -44,7 +44,7 @@ export const showDataOnMap = (data, casesType = 'cases') =>
 			}
 		>
 			<Popup>
-				{/* <div className='info-container'>
+				<div className='info-container'>
 					<div
 						className='info-flag'
 						style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
@@ -59,8 +59,7 @@ export const showDataOnMap = (data, casesType = 'cases') =>
 					<div className='info-deaths'>
 						Deaths: {numeral(country.deaths).format('0,0')}
 					</div>
-				</div> */}
-				<h1>Am a popup</h1>
+				</div>
 			</Popup>
 		</Circle>
 	));
