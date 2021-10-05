@@ -3,9 +3,12 @@ import { Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/c
 import "./App.css";
 import { InfoBox } from './components/infoBox/InfoBox';
 import { Map } from './components/map/Map';
+import { Table } from './components/table/Table';
+import { sortData } from './components/util';
 
 export const App = () => {
   const [ countries, setCountries ] = useState( [] );
+  const [ tableData, setTableData ] = useState( [] );
   const [ country, setCountry ] = useState( 'worldwide' );
   const [ countryInfo, setCountryInfo ] = useState( {} );
 
@@ -25,7 +28,9 @@ export const App = () => {
 					const countries = data.map(country => ({
 						name: country.country,
 						value: country.countryInfo.iso2,
-					}));
+					} ) );
+					const sortedData = sortData( data );
+					setTableData(sortedData)
 					setCountries(countries);
 				});
     }
@@ -88,7 +93,7 @@ export const App = () => {
 				<Card>
 					<CardContent>
 						<h3>Live Cases by Country</h3>
-						{/* Table */}
+						<Table countries={tableData} />
 						<h3>Worldwide new cases</h3>
 						{/* Graph */}
 					</CardContent>
