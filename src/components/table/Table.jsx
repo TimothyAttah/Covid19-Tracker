@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import './Table.css';
 
-export const Table = () => {
+export const Table = ({countries}) => {
   return (
-    <div>
-      <h2>table</h2>
+    <div className="table">
+      { countries.map( ({country, cases}) => (
+        <tr>
+          <td>{ country }</td>
+          <td><strong>{ cases }</strong></td>
+        </tr>
+      ))}
     </div>
   )
 }
